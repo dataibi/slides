@@ -78,6 +78,21 @@ Select * {
 
 +++
 
+```sql
+Prefix lgdo:<http://linkedgeodata.org/ontology/>
+Prefix geom:<http://geovocab.org/geometry#>
+Prefix ogc: <http://www.opengis.net/ont/geosparql#>
+SELECT * WHERE {
+    ?p a lgdo:Helipad ; geom:geometry/ogc:asWKT ?pgv .
+    ?h a lgdo:Hospital; geom:geometry/ogc:asWKT ?hgv . 
+
+    Filter(bif:st_intersects(?pgv, ?hgv, 0.5))
+}
+LIMIT 10
+```
+
++++
+
 ## Query su ISTAT
 http://datiopen.istat.it/sparqlIstat.php
 
