@@ -102,6 +102,18 @@ _lasciamo perdere...._
 
 +++
 
+_aspetta un attimo_
+
++++
+
+curl
+
++++
+
+http://datiopen.istat.it/sparql/oracle?query=PREFIX+ORACLE_SEM_FS_NS%3A+%3Chttp%3A%2F%2Foracle.com%2Fsemtech%23timeout%3D600%2Callow_dup%3Dt%2Cstrict_default%3Df%3Eselect+%3Fa+where+%7B%3Fa+%3Fb+%3Fc%7D+limit+10&format=csv
+
++++
+
 ## Query su Camera dei Deputati
 http://dati.camera.it/sparql
 
