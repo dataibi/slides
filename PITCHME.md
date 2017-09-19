@@ -20,7 +20,7 @@ WHERE {
 
 +++
 
-```sparql
+```sql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbo: <http://dbpedia.org/ontology/>
 								
@@ -33,6 +33,7 @@ WHERE {
 
 +++
 
+```sql
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 	PREFIX dbo: <http://dbpedia.org/ontology/>
 								
@@ -41,6 +42,7 @@ WHERE {
 		?author rdf:type dbo:Writer . 
 		OPTIONAL {?author dbo:notableWork ?work}  
 	} LIMIT 1000 
+```
 
 +++
 
@@ -64,31 +66,35 @@ http://dati.camera.it/sparql
 +++
 
 ### Tutte le legislature
-
+```sql
 	SELECT ?leg WHERE {
 		?leg a ocd:legislatura
 	} 
+```
 
 +++
 
 ### Tutte le legislature per cui ci sono dati sulle votazioni
-
+```sql
 	SELECT ?leg WHERE {
 		?votazione a ocd:votazione .
 		?votazione ocd:rif_leg ?leg
 	}
+```
 
 +++
 
 ### Tutte le legislature per cui ci sono dati sulle votazioni
-
+```sql
 	SELECT distinct ?leg WHERE {
 		?votazione a ocd:votazione .
 		?votazione ocd:rif_leg ?leg
 	}
+```
 
 +++
 
+```sql
 	SELECT distinct * WHERE {
 		?votazione a ocd:votazione; 
 		dc:date ?data; 
@@ -98,6 +104,7 @@ http://dati.camera.it/sparql
 		ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>
 	} 
 	ORDER BY DESC(?data)
+```
 
 ---
 
@@ -109,10 +116,12 @@ Chiedere a uno SPARQL Endpoint quali RDF Graphs sono disponibili
 
 +++
 
+```sql
 	SELECT DISTINCT ?g
 	WHERE {
 		GRAPH ?g { ?s ?p ?o . }
 	}
+```
 
 ---						
 
