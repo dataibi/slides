@@ -8,14 +8,14 @@ http://dbpedia.org/sparql
 
 +++
 
-
+```sql
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 	PREFIX dbo: <http://dbpedia.org/ontology/>
 	SELECT ?author  
 	WHERE { 
 		?author rdf:type dbo:Writer . 
 	} LIMIT 1000 
-
+```
 +++
 
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
