@@ -114,6 +114,14 @@ http://datiopen.istat.it/sparql/oracle?query=PREFIX+ORACLE_SEM_FS_NS%3A+%3Chttp%
 
 +++
 
+http://datiopen.istat.it/sparql/oracle?query=PREFIX+ORACLE_SEM_FS_NS%3A+%3Chttp%3A%2F%2Foracle.com%2Fsemtech%23timeout%3D600%2Callow_dup%3Dt%2Cstrict_default%3Df%3E%20PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20ter%3A%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Fontologia%2Fterritorio%2F%3E%0APREFIX%20cen%3A%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Fontologia%2Fcensimento%2F%3E%0APREFIX%20qb%3A%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%20%0ASELECT%20%20%3FComune%20%3FCodice_Istat_Comune%20%3FProvincia%20(replace(str(%3FAlt)%2C%22%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23decimal%3E%22%2C%20%22%22)%20as%20%3FAltitudine)%20%0AWHERE%20%7B%20%0A%3Fcom%20rdf%3Atype%20ter%3AEntitaTerritoriale%20.%0A%3Fcom%20ter%3AhaNome%20%3FComune%20.%20%0A%3Fcom%20ter%3AhaCodIstat%20%3FCodice_Istat_Comune%20.%20%0A%3Fcom%20ter%3AhaAltitudineMaxCOM%20%3FAlt%20.%0A%3Fcom%20ter%3Aprovincia_di_COM%20%3Fprov%20.%20%0A%3Fprov%20ter%3AhaNome%20%3FProvincia%20.%0AFILTER%20(%3FAlt%20%3E%204000)%0A%7D%20ORDER%20BY%20DESC%20(%3FAlt)+limit+10&format=csv
+
++++
+
+http://datiopen.istat.it/sparql/oracle?query=PREFIX+ORACLE_SEM_FS_NS%3A+%3Chttp%3A%2F%2Foracle.com%2Fsemtech%23timeout%3D600%2Callow_dup%3Dt%2Cstrict_default%3Df%3E%20PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20ter%3A%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Fontologia%2Fterritorio%2F%3E%0APREFIX%20cen%3A%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Fontologia%2Fcensimento%2F%3E%0APREFIX%20qb%3A%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%20%0ASELECT%20%20%3FLocalita%20(replace(str(%3FStranieri)%2C%22%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23decimal%3E%22%2C%20%22%22)%20as%20%3FStranieri_origine_Asiatica)%20%0AWHERE%20%7B%0A%3Floc%20rdf%3Atype%20ter%3ALOC%20.%20%0A%3Floc%20ter%3AhaNome%20%3FLocalita%20.%0A%3Floc%20ter%3Aprovincia_di_LOC%20%3Fprov%20.%0A%3Floc%20ter%3AhaIndicatoreCensimento%20%3Fo%20.%20%20%20%0A%3Fo%20cen%3AprovieneDa%20cen%3AAsia%20.%0A%3Fo%20cen%3AhaStranieriApolidiResidentiItalia%20%3FStranieri.%0AFILTER(%3Fprov%20%3D%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Frisorsa%2Fterritorio%2Fprovince%2FPalermo%3E)%20%0A%7D%20ORDER%20BY%20DESC%20(%3FStranieri)%0A+limit+10&format=csv
+
++++
+
 ## Query su Camera dei Deputati
 http://dati.camera.it/sparql
 
