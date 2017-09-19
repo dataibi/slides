@@ -25,8 +25,9 @@ http://dbpedia.org/sparql
 		?author rdf:type dbo:Writer . 
 		?author dbo:notableWork ?work 
 	} LIMIT 1000 
-	
+
 +++
+
 	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 	PREFIX dbo: <http://dbpedia.org/ontology/>
 								
@@ -37,6 +38,7 @@ http://dbpedia.org/sparql
 	} LIMIT 1000 
 
 +++
+
 ## Query su LinkedGeoData
 http://linkedgeodata.org/sparql
 
@@ -46,7 +48,8 @@ http://linkedgeodata.org/sparql
 http://datiopen.istat.it/sparqlIstat.php
 
 +++
-<i>lasciamo perdere....</i>
+
+_lasciamo perdere...._
 
 +++
 
@@ -55,68 +58,63 @@ http://dati.camera.it/sparql
 
 +++
 
-							<code>
-						<h3>Tutte le legislature</h3>
-						SELECT ?leg WHERE {
-							?leg a ocd:legislatura
-						} 
-							</code>
+### Tutte le legislature
 
-+++
-
-## Tutte le legislature per cui ci sono dati sulle votazioni
-							<code>
-
-						SELECT ?leg WHERE {
-							?votazione a ocd:votazione .
-							?votazione ocd:rif_leg ?leg
-						}
-							</code>
+	SELECT ?leg WHERE {
+		?leg a ocd:legislatura
+	} 
 
 +++
 
 ## Tutte le legislature per cui ci sono dati sulle votazioni
 
-							<code>
-						SELECT distinct ?leg WHERE {
-							?votazione a ocd:votazione .
-							?votazione ocd:rif_leg ?leg
-						}
-							</code>
+	SELECT ?leg WHERE {
+		?votazione a ocd:votazione .
+		?votazione ocd:rif_leg ?leg
+	}
 
 +++
 
-							<code>
-						SELECT distinct * WHERE {
-							?votazione a ocd:votazione; 
-							dc:date ?data; 
-							dc:title ?denominazione; 
-							dc:description ?descrizione;
-							ocd:votanti ?votanti;
-							ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>
-						} 
-						ORDER BY DESC(?data)
-							</code>
+## Tutte le legislature per cui ci sono dati sulle votazioni
+
+	SELECT distinct ?leg WHERE {
+		?votazione a ocd:votazione .
+		?votazione ocd:rif_leg ?leg
+	}
+
++++
+
+	SELECT distinct * WHERE {
+		?votazione a ocd:votazione; 
+		dc:date ?data; 
+		dc:title ?denominazione; 
+		dc:description ?descrizione;
+		ocd:votanti ?votanti;
+		ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>
+	} 
+	ORDER BY DESC(?data)
 
 ---
+
 ## Query Utili
 
 Chiedere a uno SPARQL Endpoint quali RDF Graphs sono disponibili
 
 +++
-							<code>
-								SELECT DISTINCT ?g
-								WHERE {
-									GRAPH ?g { ?s ?p ?o . }
-								}
-							</code>
+
+	SELECT DISTINCT ?g
+	WHERE {
+		GRAPH ?g { ?s ?p ?o . }
+	}
 
 ---						
 
 # Applicazioni
 
 +++
+
 ## Google spreadsheet	
+
 +++				
 					=IMPORTDATA("http://factforge.net/repositories/ff-news?query=%23+F4%3A+Top-lev
 el+industries+by+number+of+companies%0A%23+-+benefits+from+the+mapping+a
@@ -131,15 +129,15 @@ ry+%5Eff-map%3AindustryVariant+%2F+ff-map%3AindustryCenter+%3Ftop_industry
 +.%0A%7D%0AGROUP+BY+%3Ftop_industry+ORDER+BY+DESC(%3Fcount)+")
 
 +++
-## cURL
-+++
 
-						curl -H Accept:text/tab-separated-values
-"http://factforge.net/repositories/ff-news?infer=true&sameAs=false&query=PREFIX+dbo%3
-A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT+%3Findustry+%7B%24company+dbo
-%3Aindustry+%3Findustry%7D%0A&$company=<http://dbpedia.org/resource/Google>"
+## cURL
+
++++
+						
+	curl -H Accept:text/tab-separated-values "http://factforge.net/repositories/ff-news?infer=true&sameAs=false&query=PREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0ASELECT+%3Findustry+%7B%24company+dbo%3Aindustry+%3Findustry%7D%0A&$company=<http://dbpedia.org/resource/Google>"
 
 --- 
+
 ### e tanto altro ancora...
 					
 +++    
