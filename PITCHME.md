@@ -51,6 +51,33 @@ http://linkedgeodata.org/sparql
 
 +++
 
+```sql
+Prefix lgdo: <http://linkedgeodata.org/ontology/>
+Prefix geom: <http://geovocab.org/geometry#>
+Prefix ogc: <http://www.opengis.net/ont/geosparql#>
+Prefix owl: <http://www.w3.org/2002/07/owl#>
+
+Select * {
+  ?s
+    owl:sameAs <http://dbpedia.org/resource/Palermo> ;
+    geom:geometry [
+      ogc:asWKT ?sg
+    ] .
+
+  ?x
+    a lgdo:Hospital ;
+    rdfs:label ?l ;    
+    geom:geometry [
+      ogc:asWKT ?xg
+    ] .
+
+
+    Filter(bif:st_intersects (?sg, ?xg, 10)) .
+}
+```
+
++++
+
 ## Query su ISTAT
 http://datiopen.istat.it/sparqlIstat.php
 
