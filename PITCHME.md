@@ -151,49 +151,50 @@ WHERE {
 
 +++
 
-## Query su LinkedGeoData
-http://linkedgeodata.org/sparql
+## Query su Camera dei Deputati
+http://dati.camera.it/sparql
 
 +++
 
+### Tutte le legislature
 ```sql
-Prefix lgdo: <http://linkedgeodata.org/ontology/>
-Prefix geom: <http://geovocab.org/geometry#>
-Prefix ogc: <http://www.opengis.net/ont/geosparql#>
-Prefix owl: <http://www.w3.org/2002/07/owl#>
+	SELECT ?leg WHERE {
+		?leg a ocd:legislatura
+	} 
+```
 
-Select * {
-  ?s
-    owl:sameAs <http://dbpedia.org/resource/Palermo> ;
-    geom:geometry [
-      ogc:asWKT ?sg
-    ] .
++++
 
-  ?x
-    a lgdo:Hospital ;
-    rdfs:label ?l ;    
-    geom:geometry [
-      ogc:asWKT ?xg
-    ] .
+### Tutte le legislature per cui ci sono dati sulle votazioni
+```sql
+	SELECT ?leg WHERE {
+		?votazione a ocd:votazione .
+		?votazione ocd:rif_leg ?leg
+	}
+```
 
++++
 
-    Filter(bif:st_intersects (?sg, ?xg, 10)) .
-}
+### Tutte le legislature per cui ci sono dati sulle votazioni
+```sql
+	SELECT distinct ?leg WHERE {
+		?votazione a ocd:votazione .
+		?votazione ocd:rif_leg ?leg
+	}
 ```
 
 +++
 
 ```sql
-Prefix lgdo:<http://linkedgeodata.org/ontology/>
-Prefix geom:<http://geovocab.org/geometry#>
-Prefix ogc: <http://www.opengis.net/ont/geosparql#>
-SELECT * WHERE {
-    ?p a lgdo:Helipad ; geom:geometry/ogc:asWKT ?pgv .
-    ?h a lgdo:Hospital; geom:geometry/ogc:asWKT ?hgv . 
-
-    Filter(bif:st_intersects(?pgv, ?hgv, 0.5))
-}
-LIMIT 10
+	SELECT distinct * WHERE {
+		?votazione a ocd:votazione; 
+		dc:date ?data; 
+		dc:title ?denominazione; 
+		dc:description ?descrizione;
+		ocd:votanti ?votanti;
+		ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>
+	} 
+	ORDER BY DESC(?data)
 ```
 
 +++
@@ -291,54 +292,50 @@ WHERE {
 
 http://datiopen.istat.it/sparql/oracle?query=PREFIX+ORACLE_SEM_FS_NS%3A+%3Chttp%3A%2F%2Foracle.com%2Fsemtech%23timeout%3D600%2Callow_dup%3Dt%2Cstrict_default%3Df%3E%20PREFIX%20rdf%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%3E%0APREFIX%20rdfs%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23%3E%0APREFIX%20ter%3A%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Fontologia%2Fterritorio%2F%3E%0APREFIX%20cen%3A%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Fontologia%2Fcensimento%2F%3E%0APREFIX%20qb%3A%20%3Chttp%3A%2F%2Fpurl.org%2Flinked-data%2Fcube%23%3E%0APREFIX%20xsd%3A%20%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%3E%20%0ASELECT%20%20%3FLocalita%20(replace(str(%3FStranieri)%2C%22%3Chttp%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23decimal%3E%22%2C%20%22%22)%20as%20%3FStranieri_origine_Asiatica)%20%0AWHERE%20%7B%0A%3Floc%20rdf%3Atype%20ter%3ALOC%20.%20%0A%3Floc%20ter%3AhaNome%20%3FLocalita%20.%0A%3Floc%20ter%3Aprovincia_di_LOC%20%3Fprov%20.%0A%3Floc%20ter%3AhaIndicatoreCensimento%20%3Fo%20.%20%20%20%0A%3Fo%20cen%3AprovieneDa%20cen%3AAsia%20.%0A%3Fo%20cen%3AhaStranieriApolidiResidentiItalia%20%3FStranieri.%0AFILTER(%3Fprov%20%3D%20%3Chttp%3A%2F%2Fdatiopen.istat.it%2Fodi%2Frisorsa%2Fterritorio%2Fprovince%2FPalermo%3E)%20%0A%7D%20ORDER%20BY%20DESC%20(%3FStranieri)%0A&format=csv
 
-+++
-
-## Query su Camera dei Deputati
-http://dati.camera.it/sparql
+## Query su LinkedGeoData
+http://linkedgeodata.org/sparql
 
 +++
 
-### Tutte le legislature
 ```sql
-	SELECT ?leg WHERE {
-		?leg a ocd:legislatura
-	} 
-```
+Prefix lgdo: <http://linkedgeodata.org/ontology/>
+Prefix geom: <http://geovocab.org/geometry#>
+Prefix ogc: <http://www.opengis.net/ont/geosparql#>
+Prefix owl: <http://www.w3.org/2002/07/owl#>
 
-+++
+Select * {
+  ?s
+    owl:sameAs <http://dbpedia.org/resource/Palermo> ;
+    geom:geometry [
+      ogc:asWKT ?sg
+    ] .
 
-### Tutte le legislature per cui ci sono dati sulle votazioni
-```sql
-	SELECT ?leg WHERE {
-		?votazione a ocd:votazione .
-		?votazione ocd:rif_leg ?leg
-	}
-```
+  ?x
+    a lgdo:Hospital ;
+    rdfs:label ?l ;    
+    geom:geometry [
+      ogc:asWKT ?xg
+    ] .
 
-+++
 
-### Tutte le legislature per cui ci sono dati sulle votazioni
-```sql
-	SELECT distinct ?leg WHERE {
-		?votazione a ocd:votazione .
-		?votazione ocd:rif_leg ?leg
-	}
+    Filter(bif:st_intersects (?sg, ?xg, 10)) .
+}
 ```
 
 +++
 
 ```sql
-	SELECT distinct * WHERE {
-		?votazione a ocd:votazione; 
-		dc:date ?data; 
-		dc:title ?denominazione; 
-		dc:description ?descrizione;
-		ocd:votanti ?votanti;
-		ocd:rif_leg <http://dati.camera.it/ocd/legislatura.rdf/repubblica_17>
-	} 
-	ORDER BY DESC(?data)
-```
+Prefix lgdo:<http://linkedgeodata.org/ontology/>
+Prefix geom:<http://geovocab.org/geometry#>
+Prefix ogc: <http://www.opengis.net/ont/geosparql#>
+SELECT * WHERE {
+    ?p a lgdo:Helipad ; geom:geometry/ogc:asWKT ?pgv .
+    ?h a lgdo:Hospital; geom:geometry/ogc:asWKT ?hgv . 
 
+    Filter(bif:st_intersects(?pgv, ?hgv, 0.5))
+}
+LIMIT 10
+```
 ---
 
 # Query Utili
@@ -355,6 +352,14 @@ Chiedere a uno SPARQL Endpoint quali RDF Graphs sono disponibili
 		GRAPH ?g { ?s ?p ?o . }
 	}
 ```
+
++++
+
+Farsi restituire tutte le proprietà
+
++++
+
+Farsi restituire tutte le classi (typi, utilizati)
 
 ---						
 
