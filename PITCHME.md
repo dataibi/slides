@@ -9,6 +9,16 @@ http://dbpedia.org/sparql
 +++
 
 ```sql
+
+SELECT ?author  
+WHERE { 
+	?author <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/Writer> . 
+} LIMIT 1000 
+```
+
++++
+
+```sql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbo: <http://dbpedia.org/ontology/>
 
@@ -42,6 +52,34 @@ WHERE {
 		?author rdf:type dbo:Writer . 
 		OPTIONAL {?author dbo:notableWork ?work}  
 	} LIMIT 1000 
+```
+
++++
+
+Esercizio: estrarre da DBpedia tutte le triple che riguardano Palermo
+
++++
+
+```sql
+								
+	SELECT ?predicato ?oggetto 
+	WHERE { 
+		<http://dbpedia.org/resource/Palermo> ?predicato ?oggetto . 
+	} 
+```
+
++++
+
+Ci sono tutte?
+
++++
+
+```sql
+								
+	SELECT ?soggetto ?predicato 
+	WHERE { 
+		?soggetto ?predicato <http://dbpedia.org/resource/Palermo> . 
+	} 
 ```
 
 +++
