@@ -1,4 +1,4 @@
-Query Semplici
+# Query Semplici
 
 +++ 
 
@@ -7,40 +7,34 @@ Query Semplici
 http://dbpedia.org/sparql
 +++
 
-							<code>
-							PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; <br />
-							PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt; <br /><br />
-								
-							SELECT ?author  <br />
-							WHERE { <br />
-							       ?author rdf:type dbo:Writer . <br />
-							} LIMIT 1000 <br />
-							</code>
+
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX dbo: <http://dbpedia.org/ontology/>
+	SELECT ?author  
+	WHERE { 
+		?author rdf:type dbo:Writer . 
+	} LIMIT 1000 
 
 +++
 
-							<code>
-							PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; <br />
-							PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt; <br /><br />
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX dbo: <http://dbpedia.org/ontology/>
 								
-							SELECT ?author ?work  <br />
-							WHERE { <br />
-							       ?author rdf:type dbo:Writer . <br />
-							       ?author dbo:notableWork ?work  <br />
-							} LIMIT 1000 <br />
-							</code>
+	SELECT ?author ?work  
+	WHERE { 
+		?author rdf:type dbo:Writer . 
+		?author dbo:notableWork ?work 
+	} LIMIT 1000 
+	
 +++
-
-							<code>
-							PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; <br />
-							PREFIX dbo: &lt;http://dbpedia.org/ontology/&gt; <br /><br />
+	PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX dbo: <http://dbpedia.org/ontology/>
 								
-							SELECT ?author ?work  <br />
-							WHERE { <br />
-							       ?author rdf:type dbo:Writer . <br />
-							       OPTIONAL {?author dbo:notableWork ?work}  <br />
-							} LIMIT 1000 <br />
-							</code>
+	SELECT ?author ?work  
+	WHERE { 
+		?author rdf:type dbo:Writer . 
+		OPTIONAL {?author dbo:notableWork ?work}  
+	} LIMIT 1000 
 
 +++
 ## Query su LinkedGeoData
