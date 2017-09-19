@@ -2,9 +2,10 @@
 
 +++ 
 
-### Query su DBpedia
+## Query su DBpedia
 
 http://dbpedia.org/sparql
+
 +++
 
 
@@ -66,7 +67,7 @@ http://dati.camera.it/sparql
 
 +++
 
-## Tutte le legislature per cui ci sono dati sulle votazioni
+### Tutte le legislature per cui ci sono dati sulle votazioni
 
 	SELECT ?leg WHERE {
 		?votazione a ocd:votazione .
@@ -75,7 +76,7 @@ http://dati.camera.it/sparql
 
 +++
 
-## Tutte le legislature per cui ci sono dati sulle votazioni
+### Tutte le legislature per cui ci sono dati sulle votazioni
 
 	SELECT distinct ?leg WHERE {
 		?votazione a ocd:votazione .
@@ -96,7 +97,9 @@ http://dati.camera.it/sparql
 
 ---
 
-## Query Utili
+# Query Utili
+
++++
 
 Chiedere a uno SPARQL Endpoint quali RDF Graphs sono disponibili
 
@@ -109,7 +112,7 @@ Chiedere a uno SPARQL Endpoint quali RDF Graphs sono disponibili
 
 ---						
 
-# Applicazioni
+# Usare i risultati
 
 +++
 
@@ -140,19 +143,21 @@ ry+%5Eff-map%3AindustryVariant+%2F+ff-map%3AindustryCenter+%3Ftop_industry
 
 ### e tanto altro ancora...
 					
-+++    
-					Spraklis
++++
+
+Spraklis
 					
-					http://www.irisa.fr/LIS/ferre/sparklis/
+http://www.irisa.fr/LIS/ferre/sparklis/
 						
-					http://www.irisa.fr/LIS/ferre/sparklis/osparklis.html?endpoint=http%3A//dbpedia.org/sparql&regexp_hidden_URIs=%5E%28http%3A//www.w3.org/2002/07/owl%23%7Chttp%3A//www.openlinksw.com/%7CnodeID%3A//%7C%23%7Chttp%3A//www.wikidata.org/%29
+http://www.irisa.fr/LIS/ferre/sparklis/osparklis.html?endpoint=http%3A//dbpedia.org/sparql&regexp_hidden_URIs=%5E%28http%3A//www.w3.org/2002/07/owl%23%7Chttp%3A//www.openlinksw.com/%7CnodeID%3A//%7C%23%7Chttp%3A//www.wikidata.org/%29
 
 +++
+
 NLquery
-						http://nlquery.ayoungprogrammer.com/
+http://nlquery.ayoungprogrammer.com/
 						
-						Hokudai
-						http://wnews.ist.hokudai.ac.jp/wc3?search=Songs+written+by+Paul+McCartney
+Hokudai
+http://wnews.ist.hokudai.ac.jp/wc3?search=Songs+written+by+Paul+McCartney
 						
-						Quepy
-						http://quepy.machinalis.com/
+Quepy
+http://quepy.machinalis.com/
