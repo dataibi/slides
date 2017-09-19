@@ -83,6 +83,60 @@ WHERE {
 
 +++
 
+Esercizio: Tutte le chiese con Architettura gotica a Palermo
+
++++
+
+```sql
+SELECT ?chiesa 
+WHERE { 
+	?chiesa dbp:architectureStyle dbr:Gothic_architecture .
+	?chiesa dct:subject dbc:Churches_in_Palermo
+} 
+```
+
++++
+
+Trova la differenza
+
++++
+
+```sql
+SELECT ?label
+WHERE { 
+	?chiesa dbp:architectureStyle dbr:Gothic_architecture .
+	?chiesa dct:subject dbc:Churches_in_Palermo .
+	?chiesa rdfs:label ?label
+} 
+```
+
++++
+
+e la descrizione?
+
++++
+```sql
+SELECT ?chiesa ?abstract
+WHERE { 
+	?chiesa dbp:architectureStyle dbr:Gothic_architecture .
+	?chiesa dct:subject dbc:Churches_in_Palermo .
+       ?chiesa dbo:abstract ?abstract
+}
+```
++++
+
+```sql
+SELECT ?chiesa ?abstract
+WHERE { 
+	?chiesa dbp:architectureStyle dbr:Gothic_architecture .
+	?chiesa dct:subject dbc:Churches_in_Palermo .
+       ?chiesa dbo:abstract ?abstract .
+       FILTER (langMatches(lang(?abstract), "RU")) .
+}
+```
+
++++
+
 ## Query su LinkedGeoData
 http://linkedgeodata.org/sparql
 
