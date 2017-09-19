@@ -118,6 +118,8 @@ http://datiopen.istat.it/sparql/oracle?query=PREFIX+ORACLE_SEM_FS_NS%3A+%3Chttp%
 
 +++
 
+Elenco località della provincia di Palermo con numero di stranieri di origine asiatica
+
 ```sql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
