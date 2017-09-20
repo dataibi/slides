@@ -54,7 +54,7 @@ PREFIX dbo: <http://dbpedia.org/ontology/>
 								
 SELECT ?author ?work  
 WHERE { 
-	?author rdf:type dbo:Writer . 
+	?author a dbo:Writer . 
 	?author dbo:notableWork ?work 
 } LIMIT 1000 
 ```
@@ -64,7 +64,7 @@ WHERE {
 ```sql
 SELECT ?author count(?work) 
 WHERE { 
-	?author rdf:type dbo:Writer . 
+	?author a dbo:Writer . 
 	?author dbo:notableWork ?work 
 } GROUP BY ?author LIMIT 1000
 ```
@@ -78,7 +78,7 @@ Chi è l'autore con più opere?
 ```sql
 SELECT ?author count(?work) as ?numopere
 WHERE { 
-	?author rdf:type dbo:Writer . 
+	?author a dbo:Writer . 
 	?author dbo:notableWork ?work 
 } GROUP BY ?author ORDER BY DESC(?numopere) LIMIT 1000
 ```
@@ -91,7 +91,7 @@ PREFIX dbo: <http://dbpedia.org/ontology/>
 								
 SELECT ?author ?work  
 WHERE { 
-	?author rdf:type dbo:Writer . 
+	?author a dbo:Writer . 
 	OPTIONAL {?author dbo:notableWork ?work}  
 } LIMIT 1000 
 ```
@@ -122,6 +122,10 @@ WHERE {
 	?soggetto ?predicato <http://dbpedia.org/resource/Palermo> . 
 } 
 ```
+
++++
+
+	DESCRIBE <http://dbpedia.org/resource/Palermo>
 
 +++
 
