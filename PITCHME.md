@@ -240,6 +240,12 @@ WHERE {
 
 +++
 
+### DBpedia relation finder
+
+http://www.visualdataweb.org/relfinder.php
+
++++
+
 ## Query su Camera dei Deputati
 http://dati.camera.it/sparql
 
@@ -492,3 +498,7 @@ http://wnews.ist.hokudai.ac.jp/wc3?search=Songs+written+by+Paul+McCartney
 						
 Quepy
 http://quepy.machinalis.com/
+
++++
+
+### Visualizziamo i risultati
