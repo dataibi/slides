@@ -370,17 +370,8 @@ Farsi restituire tutte le classi (typi, utilizati)
 ## Google spreadsheet	
 
 +++				
-					=IMPORTDATA("http://factforge.net/repositories/ff-news?query=%23+F4%3A+Top-lev
-el+industries+by+number+of+companies%0A%23+-+benefits+from+the+mapping+a
-nd+consolidation+of+industry+classifications%0A%23+++and+predicates+in+DBPedi
-a+done+in+the+FactForge%0A%23+-+benefits+from+reasoning+-+transitive+and+s
-ymmetric+properties+across%0A%23+++the+industry+classification+taxonomy+of+
-FactForge%0A%0APREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%
-2F%3E%0APREFIX+ff-map%3A+%3Chttp%3A%2F%2Ffactforge.net%2Fff2016-mappin
-g%2F%3E%0A%0ASELECT+DISTINCT+%3Ftop_industry+(COUNT(*)+AS+%3Fcount)
-%0A%7B%0A+++%3Fcompany+dbo%3Aindustry+%3Findustry+.%0A+++%3Findust
-ry+%5Eff-map%3AindustryVariant+%2F+ff-map%3AindustryCenter+%3Ftop_industry
-+.%0A%7D%0AGROUP+BY+%3Ftop_industry+ORDER+BY+DESC(%3Fcount)+")
+
+	=IMPORTDATA("http://factforge.net/repositories/ff-news?query=%23+F4%3A+Top-level+industries+by+number+of+companies%0A%23+-+benefits+from+the+mapping+and+consolidation+of+industry+classifications%0A%23+++and+predicates+in+DBPedia+done+in+the+FactForge%0A%23+-+benefits+from+reasoning+-+transitive+and+symmetric+properties+across%0A%23+++the+industry+classification+taxonomy+of+FactForge%0A%0APREFIX+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0APREFIX+ff-map%3A+%3Chttp%3A%2F%2Ffactforge.net%2Fff2016-mapping%2F%3E%0A%0ASELECT+DISTINCT+%3Ftop_industry+(COUNT(*)+AS+%3Fcount)%0A%7B%0A+++%3Fcompany+dbo%3Aindustry+%3Findustry+.%0A+++%3Findustry+%5Eff-map%3AindustryVariant+%2F+ff-map%3AindustryCenter+%3Ftop_industry+.%0A%7D%0AGROUP+BY+%3Ftop_industry+ORDER+BY+DESC(%3Fcount)+")
 
 +++
 
