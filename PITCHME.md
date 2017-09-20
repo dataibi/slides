@@ -44,6 +44,10 @@ WHERE {
 
 +++
 
+prefissi predefiniti
+
++++
+
 ```sql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbo: <http://dbpedia.org/ontology/>
@@ -53,6 +57,30 @@ WHERE {
 	?author rdf:type dbo:Writer . 
 	?author dbo:notableWork ?work 
 } LIMIT 1000 
+```
+
++++
+
+```sql
+SELECT ?author count(?work) 
+WHERE { 
+	?author rdf:type dbo:Writer . 
+	?author dbo:notableWork ?work 
+} GROUP BY ?author LIMIT 1000
+```
+
++++
+
+Chi è l'autore con più opere?
+
++++
+
+```sql
+SELECT ?author count(?work) as ?numopere
+WHERE { 
+	?author rdf:type dbo:Writer . 
+	?author dbo:notableWork ?work 
+} GROUP BY ?author ORDER BY DESC(?numopere) LIMIT 1000
 ```
 
 +++
