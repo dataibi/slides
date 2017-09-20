@@ -61,6 +61,63 @@ WHERE {
 
 +++
 
+Ma _non è che_ si può avere in ordine alfabetico? 
+
++++
+
+```sql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+								
+SELECT ?author ?work  
+WHERE { 
+	?author a dbo:Writer . 
+	?author dbo:notableWork ?work 
+} ORDER BY(?author) LIMIT 1000 
+```
+
++++
+
+Ma _non è che_ possiamo navigare il grafo con la query?
+
++++
+
+```sql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+								
+SELECT ?author ?work ?date
+WHERE { 
+	?author a dbo:Writer . 
+	?author dbo:notableWork ?work .
+        ?work dbo:premiereDate ?date
+} LIMIT 1000 
+```
+
++++
+
+Ma _non è che_ l'ordinamento vale anche per le date?
+
++++
+
+```sql
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+								
+SELECT ?author ?work ?date
+WHERE { 
+	?author a dbo:Writer . 
+	?author dbo:notableWork ?work .
+        ?work dbo:premiereDate ?date
+} ORDER BY DESC(?date) LIMIT 1000 
+```
+
++++
+
+Quante opere per ogni autore?
+
++++
+
 ```sql
 SELECT ?author count(?work) 
 WHERE { 
@@ -71,7 +128,7 @@ WHERE {
 
 +++
 
-Chi è l'autore con più opere?
+Si ma ... chi è l'autore con più opere?
 
 +++
 
