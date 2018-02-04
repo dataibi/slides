@@ -1,8 +1,8 @@
-# Query Semplici
+# Python
 
 +++ 
 
-## Query su DBpedia
+## Introduzione
 
 http://dbpedia.org/sparql
 
